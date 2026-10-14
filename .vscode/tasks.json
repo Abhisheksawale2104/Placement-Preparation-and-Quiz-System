@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Java Ready Web App",
+			"type": "shell",
+			"command": "powershell.exe",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"New-Item -ItemType Directory -Force -Path out | Out-Null; javac --add-modules jdk.httpserver -d out src\\placementprep\\Main.java src\\placementprep\\model\\*.java src\\placementprep\\quiz\\*.java src\\placementprep\\service\\*.java src\\placementprep\\web\\*.java; if ($LASTEXITCODE -eq 0) { java --add-modules jdk.httpserver -cp out placementprep.web.PlacementPrepServer }"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
